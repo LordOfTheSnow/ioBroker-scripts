@@ -14,10 +14,10 @@ A script for ioBroker to display an incoming phone call via the Fritzbox TR-064 
     * Object: tr-064.0.callmonitor.inbound.callerName
   * Adapter: LG WebOS SmartTV (lgtv)
     * Object: lgtv.0.states.popup
-    * lgtv.0.states.volume
+    * Object: lgtv.0.states.volume
   * Adapter: Scripts (javascript)
 
-* **The Fritzbox call monitor needs to be enabled for this to work**. It can be enabled dialing `#96*5*`on a phone connected to the Fritzbox. The tr-064 instance also needs a Fritzbox user with at least `Smart Home` rights. Internet access should **not** be given to this user (unless neccessary for some good reason).
+* **The Fritzbox call monitor needs to be enabled for this to work**. It can be enabled by dialing `#96*5*`on a phone connected to the Fritzbox. The tr-064 instance also needs a Fritzbox user with at least `Smart Home` rights. Internet access should **not** be given to this user (unless neccessary for some good reason).
 * When setting up the adapter for the LG TV, you need to confirm access of the script to your TV as shown on the TV display.
 * Both devices should be in the same network of course.
 
@@ -25,6 +25,7 @@ A script for ioBroker to display an incoming phone call via the Fritzbox TR-064 
 This is no ioBroker / Blockly documentation. So see there (well, is there any usable ioBroker documentation at all???) how to set up ioBroker and its adapters / instances.
 
 Here is what the German texts in the script mean in English:
+* "Anruf von" -> Call from
 * "unbekannt" -> unknown
 * "unbekannte Rufnummer" -> unknown number
 
