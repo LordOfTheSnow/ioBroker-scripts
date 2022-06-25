@@ -1,0 +1,182 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="KfG07dkI,uqdFWs#Usug">callerName</variable>
+    <variable id="{MZjlSoYPlp%PiyX$O@q">caller</variable>
+  </variables>
+  <block type="comment" id="80g5wNlR#`X%7$qGf?kS" x="38" y="13">
+    <field name="COMMENT">Display an incoming call via the Fritzbox TR064 protocol on a LG webOS TV</field>
+    <next>
+      <block type="on" id="p{MFFC$Qd=wXulB@BR!3">
+        <field name="OID">tr-064.0.callmonitor.ringing</field>
+        <field name="CONDITION">true</field>
+        <field name="ACK_CONDITION"></field>
+        <statement name="STATEMENT">
+          <block type="controls_if" id="JNYKc2~P36qqevS+4$;4">
+            <value name="IF0">
+              <block type="logic_compare" id="%rtsN6|8ln`*z7h$*gNU">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="get_value" id="qqB`;fzHYxvdnbSX2LDr">
+                    <field name="ATTR">val</field>
+                    <field name="OID">lgtv.0.info.connection</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="2~f]/J~:+gu{GQnHRf/_">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="comment" id="oB89aASzQi$fR4~sCw/4">
+                <field name="COMMENT">set Pause to 1s to give the adapter time to update caller,  callerName etc. Otherwise the variables below will still contain the values from the previous call</field>
+                <next>
+                  <block type="timeouts_wait" id="fv}];_uUAWW73`b.E#Jz">
+                    <field name="DELAY">1000</field>
+                    <field name="UNIT">ms</field>
+                    <next>
+                      <block type="variables_set" id="riNOz6uO|0g-6@S0ZGOP">
+                        <field name="VAR" id="KfG07dkI,uqdFWs#Usug">callerName</field>
+                        <value name="VALUE">
+                          <block type="get_value" id="jd:k4He:H{I(k3CY*.u1">
+                            <field name="ATTR">val</field>
+                            <field name="OID">tr-064.0.callmonitor.inbound.callerName</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="N?oH+*t/.bj(CCjuZz-m">
+                            <value name="IF0">
+                              <block type="logic_compare" id="bp?E%-utv@J`DTkPze=H">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="tt)vGq/gIC/I3fmgiZ~c">
+                                    <field name="VAR" id="KfG07dkI,uqdFWs#Usug">callerName</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text" id="H_c!aV03QfTc~g,clCih">
+                                    <field name="TEXT"></field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="variables_set" id="!D~Ny(bz8(%oS09diJX,">
+                                <field name="VAR" id="KfG07dkI,uqdFWs#Usug">callerName</field>
+                                <value name="VALUE">
+                                  <block type="text" id="=*93iy*dEo~ik;=$7ISv">
+                                    <field name="TEXT">unbekannt</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="variables_set" id="}!Clf7srdv,h.jx9[;Xv">
+                                <field name="VAR" id="{MZjlSoYPlp%PiyX$O@q">caller</field>
+                                <value name="VALUE">
+                                  <block type="get_value" id="8DhWhSN3/JQiMtH9py5S">
+                                    <field name="ATTR">val</field>
+                                    <field name="OID">tr-064.0.callmonitor.inbound.caller</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="ssqshXDqQAmwBg|,Z?=r">
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="6sY/]D,;$2rak(4oH|[X">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="5OTqKnXmK[3pNMqI.K6%">
+                                            <field name="VAR" id="{MZjlSoYPlp%PiyX$O@q">caller</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="text" id="DBL{X/z6XCD~GvGt|A%!">
+                                            <field name="TEXT"></field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="variables_set" id="IFKih3z:lomYm8|)uURQ">
+                                        <field name="VAR" id="{MZjlSoYPlp%PiyX$O@q">caller</field>
+                                        <value name="VALUE">
+                                          <block type="text" id="Sai_=|9]YwZ(C{DeJt-$">
+                                            <field name="TEXT">unbekannte Rufnummer</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="control" id="A;/3/xv1:$7qLVzinzaW">
+                                        <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                        <field name="OID">lgtv.0.states.popup</field>
+                                        <field name="WITH_DELAY">FALSE</field>
+                                        <value name="VALUE">
+                                          <block type="text_join" id="y@?`6XENiXZdI{m}v@xl">
+                                            <mutation items="6"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="qi`,BFc%!09dMtCP#=}O">
+                                                <field name="TEXT">Anruf von </field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="variables_get" id="2Em)e(KSkf-Mel{pW!/!">
+                                                <field name="VAR" id="KfG07dkI,uqdFWs#Usug">callerName</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD2">
+                                              <block type="text" id="g^Uw39N*w[:|;=r%lm{C">
+                                                <field name="TEXT"> (</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD3">
+                                              <block type="variables_get" id="XD973zJmb[vJjX)fDDHg">
+                                                <field name="VAR" id="{MZjlSoYPlp%PiyX$O@q">caller</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD4">
+                                              <block type="text" id="P[:4xb8-mII15-%uGOUK">
+                                                <field name="TEXT">) -&gt; </field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD5">
+                                              <block type="get_value" id=")@Q^o}u{wb;}d:]DFi3l">
+                                                <field name="ATTR">val</field>
+                                                <field name="OID">tr-064.0.callmonitor.inbound.callee</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="control" id="$Y|(`Z~1.{vv$sin`B17">
+                                            <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+                                            <field name="OID">lgtv.0.states.volume</field>
+                                            <field name="WITH_DELAY">FALSE</field>
+                                            <value name="VALUE">
+                                              <block type="math_number" id="jDS8T8Wewnxl+0n|5rLM">
+                                                <field name="NUM">6</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+</xml>
