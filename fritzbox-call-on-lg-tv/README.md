@@ -21,7 +21,13 @@ A script for ioBroker to display an incoming phone call via the Fritzbox TR-064 
 * When setting up the adapter for the LG TV, you need to confirm access of the script to your TV as shown on the TV display.
 * Both devices should be in the same network of course.
 
+## Documentation
 This is no ioBroker / Blockly documentation. So see there (well, is there any usable ioBroker documentation at all???) how to set up ioBroker and its adapters / instances.
+
+Here is what the German texts in the script mean in English:
+* "unbekannt" -> unknown
+* "unbekannte Rufnummer" -> unknown number
+
 
 ## Files provided
 
